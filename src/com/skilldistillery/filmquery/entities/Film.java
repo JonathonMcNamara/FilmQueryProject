@@ -1,5 +1,6 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Film {
@@ -8,24 +9,40 @@ public class Film {
 	private String title;
 	private String description;
 	private String releaseYear;
-	private int languageId;
+	private String languageId;
 	private int rentalDuration;
 	private double rentalRate;
 	private int length;
 	private double replacementCost;
-	private double rating;
+	private String rating;
 	private Object features;
+	private List<Actor> filmActors;
 	
 	
 	
+
 	@Override
 	public String toString() {
-		return "Film ID: " + id + " Title: " + title + ", Desc: " + description + ", Release Year :" + releaseYear
-				+ " Language ID: " + languageId + " Rental Duration: " + rentalDuration + " Rental Rate: " + rentalRate
-				+ " Length: " + length + " Replacement Cost: " + replacementCost + " Rating: " + rating + " Features: "
-				+ features;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" Film ID: " + id);
+		sb.append(" Title: " + title);
+		sb.append(" Desc: " + description);
+		sb.append(" Release Year :" + releaseYear);
+		sb.append(" Language : " + languageId);
+		sb.append(" Rental Duration: " + rentalDuration);
+		sb.append(" Length: " + length);
+		sb.append(" Replacement Cost: " + replacementCost);
+		sb.append(" Rating: " + rating);
+		sb.append(" Features: "+ features);
+		sb.append(" Film Actors : ");
+		for(Actor actor: filmActors) {
+			sb.append(actor.getFirstName() + " ");
+			sb.append(actor.getLastName() + " ");
+		}
+		return sb.toString();
+
 	}
-	@Override
+@Override
 	public int hashCode() {
 		return Objects.hash(description, features, id, languageId, length, rating, releaseYear, rentalDuration,
 				rentalRate, replacementCost, title);
@@ -41,18 +58,15 @@ public class Film {
 		Film other = (Film) obj;
 		return Objects.equals(description, other.description) && Objects.equals(features, other.features)
 				&& id == other.id && languageId == other.languageId && length == other.length
-				&& Double.doubleToLongBits(rating) == Double.doubleToLongBits(other.rating)
-				&& Objects.equals(releaseYear, other.releaseYear) && rentalDuration == other.rentalDuration
+				&& Objects.equals(rating, other.rating) && Objects.equals(releaseYear, other.releaseYear)
+				&& rentalDuration == other.rentalDuration
 				&& Double.doubleToLongBits(rentalRate) == Double.doubleToLongBits(other.rentalRate)
 				&& Double.doubleToLongBits(replacementCost) == Double.doubleToLongBits(other.replacementCost)
 				&& Objects.equals(title, other.title);
 	}
 
-	
-
-
-public Film(int id, String title, String description, String releaseYear, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, double rating, Object features) {
+public Film(int id, String title, String description, String releaseYear, String languageId, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, Object features) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -66,7 +80,7 @@ public Film(int id, String title, String description, String releaseYear, int la
 		this.rating = rating;
 		this.features = features;
 	}
-// ALL THE GETTERS & SETTERS
+	// ALL THE GETTERS & SETTERS
 	public int getId() {
 		return id;
 	}
@@ -91,10 +105,10 @@ public Film(int id, String title, String description, String releaseYear, int la
 	public void setReleaseYear(String releaseYear) {
 		this.releaseYear = releaseYear;
 	}
-	public int getLanguageId() {
+	public String getLanguageId() {
 		return languageId;
 	}
-	public void setLanguageId(int languageId) {
+	public void setLanguageId(String languageId) {
 		this.languageId = languageId;
 	}
 	public int getRentalDuration() {
@@ -121,10 +135,10 @@ public Film(int id, String title, String description, String releaseYear, int la
 	public void setReplacementCost(double replacementCost) {
 		this.replacementCost = replacementCost;
 	}
-	public double getRating() {
+	public String getRating() {
 		return rating;
 	}
-	public void setRating(double rating) {
+	public void setRating(String rating) {
 		this.rating = rating;
 	}
 	public Object getFeatures() {
@@ -132,6 +146,9 @@ public Film(int id, String title, String description, String releaseYear, int la
 	}
 	public void setFeatures(Object features) {
 		this.features = features;
+	}
+	public void setFilmActors(List<Actor> filmActors) {
+		this.filmActors = filmActors;
 	}
 	
 	

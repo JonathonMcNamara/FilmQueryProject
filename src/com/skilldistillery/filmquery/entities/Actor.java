@@ -9,6 +9,12 @@ public class Actor {
 	private String lastName;
 	private List<Film> films;
 	
+	public Actor(String firstName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 	public Actor(int actorId, String firstName, String lastName) {
 		super();
 		this.actorId = actorId;
