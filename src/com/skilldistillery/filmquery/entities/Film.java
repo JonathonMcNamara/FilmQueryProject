@@ -17,9 +17,6 @@ public class Film {
 	private String rating;
 	private Object features;
 	private List<Actor> filmActors;
-	
-	
-	
 
 	@Override
 	public String toString() {
